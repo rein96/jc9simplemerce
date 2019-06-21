@@ -47,6 +47,12 @@
       "email": "reinhart",
       "password": "reinhart",
       "id": 8
+    },
+    {
+      "username": "reinhart96",
+      "email": "reinhart96",
+      "password": "reinhart96",
+      "id": 9
     }
   ],
   "products": [

@@ -1,64 +1,66 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-// mx-auto = margin horizontal ketengah
-// kalo mau pake "col", harus dibungkus "row"
+
 class Register extends Component {
 
     onClickButton = () => {
         // harus arrow function untuk bisa mengacu "this" accurately
         const inputUsername = this.username.value
-        const inputEmail = this.email.value
+        const inputEmail = this.email.value.toLowerCase()
         const PASSWORD = this.password.value
 
-        console.log(`inputUsername = ${inputUsername}`)
-        console.log(`inputEmail = ${inputEmail}`)
+        // kalo value nya kosong
+        if (inputUsername == '' || inputEmail == '' || PASSWORD == '') {
+            alert('You must input your username, email, and password')
 
-        // GET axios.get -> request data
-        axios.get('http://localhost:2019/users', {
-            params: {
-                username: inputUsername,
-                email: inputEmail
-            }
-        }).then( res => {
-            console.log(res)
+        // kalo value nya 3 3 nya keisi
+        } else {
+             // GET axios.get -> request data
+                axios.get('http://localhost:2019/users', {
+                    params: {
+                        username: inputUsername,
+                    }
+                }).then( res => {
+                    console.log('%c res', 'color:orange; font-weight:bold;');
+                    console.log(res)
 
-            if (res.data.length > 0) {
-                // kalo ada username dan email yang sama
-                if (res.data[0].username.toLowerCase() == inputUsername.toLowerCase()) {
-                    alert( 'The username had been registered, please use different username :) ' )
-                } else if (res.data[0].email.toLowerCase() == inputEmail.toLowerCase()) {
-                    console.log('The email had been registered, please use different email')
-                    alert( 'The email had been registered, please use different email')  
-                } 
+                    if (res.data.length > 0) {
+                        alert( 'The username had been registered, please use different username :) ' )
+                    } else if (res.data.length == 0) {
+                        axios.get('http://localhost:2019/users', {
+                            params: {
+                                email : inputEmail
+                            }
+                        }).then( res2 => {
+                            console.log('%c res2', 'color:orange; font-weight:bold;');
+                            console.log(res2)
 
-            } else {
-                // POST axios.post  -> post / menaruh data
-                axios.post('http://localhost:2019/users', {
-                    username: inputUsername,
-                    email:inputEmail,
-                    password:PASSWORD
-                }).then( (res) => {
-                    console.log(res);
-                }).catch( (err) => {
-                    console.log(err);
-                } )
-            }
+                            if (res2.data.length > 0) {
+                                    alert( 'The email had been registered, please use different email') 
+                            } else {
+                                // POST axios.post  -> post / menaruh data
+                                axios.post('http://localhost:2019/users', {
+                                    // .trim() -> remove whitespaces (ilangain spasi yang gak kepake)
+                                    username: inputUsername.trim(),
+                                    email:inputEmail.trim(),
+                                    password:PASSWORD.trim()
+                                }).then( (res3) => {
+                                    console.log('%c res3', 'color:orange; font-weight:bold;');
+                                    console.log(res3);
+                                    alert('Registration success! Thankyou for your participation :)')
+                                }).catch( (err) => {
+                                    console.log(err);
+                                } )
 
-        }).catch( err => {
-            console.log(err)
-        })
-
-        
-
-        
-
-
-
-        
-
-
-    }
+                            }
+                        })
+                    }
+                }).catch( err => {
+                    console.log(err)
+                })
+        }
+    } 
 
     render() {
         return (
@@ -109,6 +111,8 @@ class Register extends Component {
 
             </div>
         )
+        // mx-auto = margin horizontal ketengah
+        // kalo mau pake "col", harus dibungkus "row"
     }
 }
 
