@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "reinhart",
+      "email": "reinhart@gmail.com",
+      "password": "satuduatiga"
+    },
+    {
+      "username": "ree",
+      "email": "gmm",
+      "password": "1234",
+      "id": 2
+    },
+    {
+      "username": "",
+      "email": "",
+      "password": "",
+      "id": 3
+    },
+    {
+      "username": "re",
+      "email": "gm",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "username": "",
+      "email": "",
+      "password": "",
+      "id": 5
+    },
+    {
+      "username": "reinhart",
+      "email": "testing",
+      "password": "testing",
+      "id": 6
+    },
+    {
+      "username": "reinhart",
+      "email": "tototo",
+      "password": "tototo",
+      "id": 7
+    },
+    {
+      "username": "reinhart",
+      "email": "reinhart",
+      "password": "reinhart",
+      "id": 8
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "nama": "car"
+    }
+  ]
+}
