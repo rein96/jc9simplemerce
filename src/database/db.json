@@ -53,6 +53,12 @@
       "email": "reinhart96",
       "password": "reinhart96",
       "id": 9
+    },
+    {
+      "username": "reinhart123",
+      "email": "reinhart123",
+      "password": "reinhart",
+      "id": 10
     }
   ],
   "products": [

@@ -6,8 +6,9 @@ class Register extends Component {
 
     onClickButton = () => {
         // harus arrow function untuk bisa mengacu "this" accurately
-        const inputUsername = this.username.value
-        const inputEmail = this.email.value.toLowerCase()
+        // .trim() -> remove whitespaces (ilangain spasi yang gak kepake)
+        const inputUsername = this.username.value.toLowerCase().trim()
+        const inputEmail = this.email.value.toLowerCase().trim()
         const PASSWORD = this.password.value
 
         // kalo value nya kosong
@@ -41,10 +42,9 @@ class Register extends Component {
                             } else {
                                 // POST axios.post  -> post / menaruh data
                                 axios.post('http://localhost:2019/users', {
-                                    // .trim() -> remove whitespaces (ilangain spasi yang gak kepake)
-                                    username: inputUsername.trim(),
-                                    email:inputEmail.trim(),
-                                    password:PASSWORD.trim()
+                                    username: inputUsername,
+                                    email:inputEmail,
+                                    password:PASSWORD
                                 }).then( (res3) => {
                                     console.log('%c res3', 'color:orange; font-weight:bold;');
                                     console.log(res3);
