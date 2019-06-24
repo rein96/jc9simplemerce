@@ -7,58 +7,10 @@
       "password": "satuduatiga"
     },
     {
-      "username": "ree",
-      "email": "gmm",
-      "password": "1234",
-      "id": 2
-    },
-    {
-      "username": "",
-      "email": "",
-      "password": "",
-      "id": 3
-    },
-    {
-      "username": "re",
-      "email": "gm",
-      "password": "123",
-      "id": 4
-    },
-    {
-      "username": "",
-      "email": "",
-      "password": "",
-      "id": 5
-    },
-    {
-      "username": "reinhart",
-      "email": "testing",
-      "password": "testing",
-      "id": 6
-    },
-    {
-      "username": "reinhart",
-      "email": "tototo",
-      "password": "tototo",
-      "id": 7
-    },
-    {
-      "username": "reinhart",
+      "username": "reinhart123",
       "email": "reinhart",
       "password": "reinhart",
-      "id": 8
-    },
-    {
-      "username": "reinhart96",
-      "email": "reinhart96",
-      "password": "reinhart96",
-      "id": 9
-    },
-    {
-      "username": "reinhart123",
-      "email": "reinhart123",
-      "password": "reinhart",
-      "id": 10
+      "id": 2
     }
   ],
   "products": [
