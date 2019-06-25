@@ -1,8 +1,37 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends React.Component {
+    // Make a function
+    onClickButton = () => {    
+        // get value text input
+        const inputUsername = this.username.value.toLowerCase().trim();
+        const inputPassword = this.password.value;
+
+        // get from database
+        axios.get('http://localhost:2019/users', {
+            params: {
+                username: inputUsername,
+                password: inputPassword
+            }
+        }).then( (res) => {
+            console.log(res);
+            if (res.data.length > 0 ) {
+                alert(res.data[0].username + ' berhasil login');
+            }
+            else if (res.data.length == 0) {
+                alert(' Oops, username atau password anda salah :( ')
+            }
+        }).catch( err => {
+            console.log(err);
+            alert('Server error')
+        })
+
+
+    }
+
 
     render() {
         return (
