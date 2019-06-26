@@ -1,4 +1,5 @@
 {
+
   "users": [
     {
       "id": 1,
@@ -16,7 +17,25 @@
   "products": [
     {
       "id": 1,
-      "nama": "car"
+      "nama": "Toyota Innova 2015",
+      "desc": "Pristine condition",
+      "price": 2000,
+      "src" : "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/2017_Toyota_Kijang_Innova_2.4_V_wagon_%28GUN142R%3B_01-12-2019%29%2C_South_Tangerang.jpg/420px-2017_Toyota_Kijang_Innova_2.4_V_wagon_%28GUN142R%3B_01-12-2019%29%2C_South_Tangerang.jpg"
+    },
+    {
+      "id": 2,
+      "nama": "Toyota Innova 2018",
+      "desc": "Pristine condition",
+      "price": 20000,
+      "src" : "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/2017_Toyota_Kijang_Innova_2.4_V_wagon_%28GUN142R%3B_01-12-2019%29%2C_South_Tangerang.jpg/420px-2017_Toyota_Kijang_Innova_2.4_V_wagon_%28GUN142R%3B_01-12-2019%29%2C_South_Tangerang.jpg"
+    },
+    {
+      "id": 3,
+      "nama": "Toyota Innova 2016",
+      "desc": "Pristine condition",
+      "price": 3000,
+      "src" : "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/2017_Toyota_Kijang_Innova_2.4_V_wagon_%28GUN142R%3B_01-12-2019%29%2C_South_Tangerang.jpg/420px-2017_Toyota_Kijang_Innova_2.4_V_wagon_%28GUN142R%3B_01-12-2019%29%2C_South_Tangerang.jpg"
     }
   ]
+  
 }

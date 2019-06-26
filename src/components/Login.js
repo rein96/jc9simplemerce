@@ -1,7 +1,8 @@
 import React from 'react';
-
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
+import { connect } from 'react-redux';
+import { onLoginUser } from '../actions/index'
 
 class Login extends React.Component {
     // Make a function
@@ -11,31 +12,14 @@ class Login extends React.Component {
         const inputPassword = this.password.value;
 
         // get from database
-        axios.get('http://localhost:2019/users', {
-            params: {
-                username: inputUsername,
-                password: inputPassword
-            }
-        }).then( (res) => {
-            console.log(res);
-            if (res.data.length > 0 ) {
-                alert(res.data[0].username + ' berhasil login');
-            }
-            else if (res.data.length == 0) {
-                alert(' Oops, username atau password anda salah :( ')
-            }
-        }).catch( err => {
-            console.log(err);
-            alert('Server error')
-        })
-
-
+        this.props.onLoginUser(inputUsername, inputPassword);
     }
 
 
     render() {
         return (
             <div>
+                <h1>{this.props.STATEUSER.username}</h1>
 
                 <div className="mt-5 row">
                     <div className="card col-sm-4 mx-auto">
@@ -87,4 +71,11 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+
+const mapStateToProps = (state) => {
+    return {
+        STATEUSER: state.auth
+    }
+}
+
+export default connect(mapStateToProps, {onLoginUser} )(Login);
