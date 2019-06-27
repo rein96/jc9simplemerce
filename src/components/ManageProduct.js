@@ -50,7 +50,7 @@ class ManageProduct extends React.Component {
         const inputPict = this.pict.value;
 
         axios.post('http://localhost:2019/products', {
-            nama:inputName,
+            nama:inputName,     //perlu diganti nama -> name
             desc:inputDesc,
             price:inputPrice,
             src:inputPict

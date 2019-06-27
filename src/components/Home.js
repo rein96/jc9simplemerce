@@ -16,15 +16,32 @@ class Home extends React.Component {
 
     onBtnSearch = () => {
 
-        const inputName = this.name.value
-        const inputMin = this.min.value
-        const inputMax = this.max.value
+        const inputName = this.name.value;
+        const inputMin = parseInt(this.min.value);
+        const inputMax = parseInt(this.max.value);
+        // inputMin = parseInt('') -> NaN
 
         var arrSearch = this.state.searchProducts.filter(el => {
-            if(el.nama.toLowerCase().includes(inputName)){
-                return true
-            } else if (inputName === ''){
-                return true
+            // Filter NAME only ->  inputMin = NaN  inputMax = NaN
+            if( isNaN(inputMin) && isNaN(inputMax) ) {
+                return(
+                    el.nama.toLowerCase().includes(inputName.toLowerCase())
+                )
+            // Filter NAME + MAX ->
+            } else if ( isNaN(inputMin) ) {
+                return(
+                    el.nama.toLowerCase().includes(inputName.toLowerCase()) && inputMax >= el.price
+                )
+            // Filter NAME + MIN 
+            } else if( isNaN(inputMax) ) {
+                return(
+                    el.nama.toLowerCase().includes(inputName.toLowerCase()) && el.price >= inputMin
+                )
+            // Filter NAME + MIN + MAX
+            } else {
+                return(
+                    el.nama.toLowerCase().includes(inputName.toLowerCase()) && inputMax >= el.price && el.price >= inputMin
+                )
             }
         })
 
@@ -47,7 +64,7 @@ class Home extends React.Component {
     renderList = () => {
         return this.state.products.map( el => {
             return (
-                <ProductItem product={el}  />
+                <ProductItem product={el} key={el.id} />
             )
         } )
     }
