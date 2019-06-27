@@ -19,7 +19,6 @@ class Login extends React.Component {
     render() {
         return (
             <div>
-                <h1>{this.props.STATEUSER.username}</h1>
 
                 <div className="mt-5 row">
                     <div className="card col-sm-4 mx-auto">

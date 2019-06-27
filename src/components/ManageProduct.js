@@ -4,17 +4,13 @@ import axios from 'axios';
 class ManageProduct extends React.Component {
 
     state = {
-        products: [],   // [ { id, name, price, desc, item, src } ]
+        products: []   // [ { id, name, price, desc, item, src } ]
+
     }
 
     componentDidMount() {
         // Akses database
-
-        axios.get('http://localhost:2019/products')
-        .then( res => {
-            console.log(res);
-            this.setState( {products: res.data} )
-        })
+        this.getProduct();
     }
 
     renderList = ( ) => {
@@ -29,14 +25,54 @@ class ManageProduct extends React.Component {
                         <img src={el.src} className="list" /> 
                     </td>
                     <td> 
-                        <button className="btn btn-primary m-3"> Edit </button> 
-                        <button className="btn btn-warning"> Delete </button> 
+                        <button className="btn btn-primary m-3" onClick={ () => {this.editProduct(el)} }> Edit </button> 
+                        <button className="btn btn-warning" onClick={ () => {this.deleteProduct(el)} } > Delete </button> 
                     </td>
                 </tr>
             )
         })
 
         return hasil;
+    }
+
+    getProduct = () => {
+        axios.get('http://localhost:2019/products')
+        .then( res => {
+            console.log(res);
+            this.setState( { products: res.data} )
+        })
+    }
+
+    addProduct = () => {
+        const inputName = this.name.value;
+        const inputDesc = this.desc.value;
+        const inputPrice = parseInt(this.price.value);
+        const inputPict = this.pict.value;
+
+        axios.post('http://localhost:2019/products', {
+            nama:inputName,
+            desc:inputDesc,
+            price:inputPrice,
+            src:inputPict
+        })
+        .then( res => {
+            console.log(res);
+
+            this.getProduct();  // axios.get
+
+            alert('Product has been added !');
+        })
+        .catch( err => console.log(err) );
+    }
+
+    deleteProduct = (el) => {
+        axios.delete(`http://localhost:2019/products/${el.id}`)
+        .then( res => {
+
+            this.getProduct();
+
+            alert('Item has been deleted');
+        }).catch( err => console.log(err));
     }
 
     render() {

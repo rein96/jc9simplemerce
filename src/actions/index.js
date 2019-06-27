@@ -15,7 +15,7 @@ export const onLoginUser = (inputUsername, inputPassword) => {
         }).then( (res) => {
             console.log(res);
             if (res.data.length > 0 ) {
-                alert(res.data[0].username + ' berhasil login');
+                alert('Welcome back ' + res.data[0].username);
 
                 dispatch({      //dispatch parameternya {obj} => function( {obj} )
                     type: 'LOGIN_SUCCESS',
@@ -26,7 +26,7 @@ export const onLoginUser = (inputUsername, inputPassword) => {
                 })
             }
             else if (res.data.length == 0) {
-                alert(' Oops, username atau password anda salah :( ')
+                alert(' Oops, username or password is incorrect :( ')
             }
         }).catch( err => {
             console.log(err);

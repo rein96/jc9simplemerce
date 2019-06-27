@@ -17,7 +17,7 @@ const authReducer = (data = init, action) => {
             }
 
         case "LOGOUT_SUCCESS":
-            return{
+            return {
                 ...data,
                 id: '',
                 username:''
