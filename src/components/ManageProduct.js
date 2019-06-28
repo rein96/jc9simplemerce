@@ -76,20 +76,20 @@ class ManageProduct extends React.Component {
     }
 
     editProduct = (el) => {
-        const inputName = this.name.value;
-        const inputDesc = this.desc.value;
-        const inputPrice = parseInt(this.price.value);
-        const inputPict = this.pict.value;
+        // const inputName = this.name.value;
+        // const inputDesc = this.desc.value;
+        // const inputPrice = parseInt(this.price.value);
+        // const inputPict = this.pict.value;
 
-        axios.put(`http://localhost:2019/products/${el.id}`, {
-            nama: inputName,
-            desc:inputDesc,
-            price:inputPrice,
-            src:inputPict
-        }).then(res => {
-            console.log(res)
-            alert('Edit success!')
-        })
+        // axios.put(`http://localhost:2019/products/${el.id}`, {
+        //     nama: inputName,
+        //     desc:inputDesc,
+        //     price:inputPrice,
+        //     src:inputPict
+        // }).then(res => {
+        //     console.log(res)
+        //     alert('Edit success!')
+        // })
     }
 
     render() {
