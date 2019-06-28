@@ -13,7 +13,7 @@ class Register extends Component {
         const PASSWORD = this.password.value
 
         // kalo value nya kosong
-        if (inputUsername == '' || inputEmail == '' || PASSWORD == '') {
+        if (inputUsername === '' || inputEmail === '' || PASSWORD === '') {
             alert('You must input your username, email, and password')
 
         // kalo value nya 3 3 nya keisi
@@ -29,7 +29,7 @@ class Register extends Component {
 
                     if (res.data.length > 0) {
                         alert( 'The username had been registered, please use different username :) ' )
-                    } else if (res.data.length == 0) {
+                    } else if (res.data.length === 0) {
                         axios.get('http://localhost:2019/users', {
                             params: {
                                 email : inputEmail

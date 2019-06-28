@@ -45,7 +45,7 @@ class Header extends React.Component {
 
     render() {
         // Kalo BELOM LOGIN
-        if (this.props.STATEUSER.username == '') {
+        if (this.props.STATEUSER.username === '') {
             return (
                 <div>
                     <Navbar color="light" light expand="md">

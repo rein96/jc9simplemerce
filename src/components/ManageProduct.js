@@ -22,7 +22,7 @@ class ManageProduct extends React.Component {
                     <td> {el.desc} </td>
                     <td> {el.price} </td>
                     <td> 
-                        <img src={el.src} className="list" /> 
+                        <img src={el.src} className="list" alt="Gambar" /> 
                     </td>
                     <td> 
                         <button className="btn btn-primary m-3" onClick={ () => {this.editProduct(el)} }> Edit </button> 

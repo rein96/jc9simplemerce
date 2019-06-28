@@ -26,6 +26,7 @@ class Home extends React.Component {
             if( isNaN(inputMin) && isNaN(inputMax) ) {
                 return(
                     el.nama.toLowerCase().includes(inputName.toLowerCase())
+                    
                 )
             // Filter NAME + MAX ->
             } else if ( isNaN(inputMin) ) {
@@ -38,9 +39,12 @@ class Home extends React.Component {
                     el.nama.toLowerCase().includes(inputName.toLowerCase()) && el.price >= inputMin
                 )
             // Filter NAME + MIN + MAX
+            // Filter MIN + MAX -> // Semua string includes ('') (String kosong) --> true
             } else {
                 return(
                     el.nama.toLowerCase().includes(inputName.toLowerCase()) && inputMax >= el.price && el.price >= inputMin
+                    
+                    
                 )
             }
         })

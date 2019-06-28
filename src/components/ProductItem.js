@@ -7,7 +7,7 @@ class ProductItem extends Component {
     render(){
         return (
             <div className="card col-3 m-5" key={this.props.key}>
-                <img src={this.props.product.src} className="card-img-top"/>
+                <img src={this.props.product.src} className="card-img-top" alt="Gambar"/>
                 <div className='card-body'>
                     <h5 className='card-title'> {this.props.product.nama} </h5>
                     <p className='card-text'> {this.props.product.desc} </p>
