@@ -1,5 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import EditProductModal from './EditProductModal'
 
 class ManageProduct extends React.Component {
 
@@ -25,8 +29,16 @@ class ManageProduct extends React.Component {
                         <img src={el.src} className="list" alt="Gambar" /> 
                     </td>
                     <td> 
-                        <button className="btn btn-primary m-3" onClick={ () => {this.editProduct(el)} }> Edit </button> 
-                        <button className="btn btn-warning" onClick={ () => {this.deleteProduct(el)} } > Delete </button> 
+                        <button className="btn btn-primary m-3" onClick={ () => {this.editProduct(el)} }> Edit </button>
+
+                        {/* <button type="button" className="btn btn-info btn-lg" data-toggle="modal" data-target="#edit-product-modal">Open Modal</button> */}
+{/* 
+                        <a href='#edit-product-modal'>
+                            ASDASDSA
+                        </a> */}
+                         
+                        <button className="btn btn-warning" onClick={ () => {this.deleteProduct(el)} } > Delete </button>
+                         
                     </td>
                 </tr>
             )
@@ -76,6 +88,28 @@ class ManageProduct extends React.Component {
     }
 
     editProduct = (el) => {
+        return (    
+            <div id='edit-product-modal' className='modal fade'>
+                
+                <div className="modal-dialog">
+
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <button type="button" className="close" data-dismiss="modal">&times;</button>
+                            <h4 className="modal-title">Modal Header</h4>
+                        </div>
+                        <div className="modal-body">
+                            <p>Some text in the modal.</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        )
+        
         // const inputName = this.name.value;
         // const inputDesc = this.desc.value;
         // const inputPrice = parseInt(this.price.value);
@@ -93,8 +127,19 @@ class ManageProduct extends React.Component {
     }
 
     render() {
+
+        // kalo belom login = STATEUSER.username nya kosong
+        if (this.props.STATEUSER.username === '') {
+            return <center><h2> You have to login first, <Link to='/login'> Click here to login </Link> </h2></center>
+            // return <Redirect to='/login' />
+        }
+
+        // kalo udah login
         return (
             <div className="container">
+
+                <EditProductModal  />
+
                 <h1 className="display-4 text-center">List Product</h1>
                 <table className="table table-hover mb-5">
                     <thead>
@@ -109,6 +154,7 @@ class ManageProduct extends React.Component {
                     </thead>
 
                     <tbody>
+                            
                         {this.renderList()}
 
                     </tbody>
@@ -135,9 +181,20 @@ class ManageProduct extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+
+                    
+
+
+
             </div>
         )
     }
 }
 
-export default ManageProduct;
+const mapStateToProps = (state) => {
+    return {
+        STATEUSER : state.auth
+    }
+}
+
+export default connect(mapStateToProps)(ManageProduct);

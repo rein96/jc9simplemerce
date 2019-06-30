@@ -1,42 +1,50 @@
 import { combineReducers } from 'redux';
+import axios from 'axios';
 
 const init = {
     id: '',
     username: '',
-    message: ''
+    myCart: []
 }
 
-const authReducer = (data = init, action) => {
+const authReducer = (state = init, action) => {
 
     switch (action.type) {
         case "LOGIN_SUCCESS":
             return {
-                ...data,
+                ...state,
                 id: action.payload.id,
                 username: action.payload.username
             }
 
         case "LOGOUT_SUCCESS":
             return {
-                ...data,
+                ...state,
                 id: '',
                 username:''
             }
+
+        case "ADD_TO_CART":
+            return{
+                ...state,
+                myCart: action.payload.myCart
+            }
     
         default:
-            return data
+            return state
     }
 
     // if (action.type == 'LOGIN_SUCCESS') {
     //     return {
-    //         ...data,    //spread operator
+    //         ...state,    //spread operator
     //         id : action.payload.id,
     //         username : action.payload.username
     //     }
     // }
 
-    // return data;
+    // return state;
 }
+
 
 
 export default combineReducers({

@@ -97,7 +97,7 @@ class Header extends React.Component {
             return (
                 <div>
                   <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">reactstrap</NavbarBrand>
+                    <NavbarBrand href="/">e-Carmerce</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                       <Nav className="ml-auto" navbar>
@@ -113,7 +113,7 @@ class Header extends React.Component {
                           </DropdownToggle>
                           <DropdownMenu right>
                             <DropdownItem>
-                              Option 1
+                              <Link to="/manageproduct" > Manage Product </Link>
                             </DropdownItem>
                             <DropdownItem>
                               Option 2

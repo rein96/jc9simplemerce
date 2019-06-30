@@ -14,6 +14,7 @@ class Home extends React.Component {
         this.getProduct()
     }
 
+    // Filter Products
     onBtnSearch = () => {
 
         const inputName = this.name.value;
@@ -50,8 +51,6 @@ class Home extends React.Component {
         })
 
         this.setState({products: arrSearch})
-
-
     }
 
     getProduct = () => {

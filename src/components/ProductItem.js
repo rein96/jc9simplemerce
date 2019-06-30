@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
+import { addToCart } from '../actions/index'
+import { connect } from 'react-redux';
 
-
-// <ProductItem products={this.state.products}  />
+// <ProductItem product={this.state.products}  />
 
 class ProductItem extends Component {
+
+
+    handleClick = (id) => {
+        this.props.addToCart(id);
+    }
+
     render(){
         return (
             <div className="card col-3 m-5" key={this.props.key}>
@@ -14,11 +21,18 @@ class ProductItem extends Component {
                     <p className='card-text'> $ {this.props.product.price} </p>
                     <input type='text' className="form-control mb-3"/>
                     <button className="btn btn-outline-primary btn-block">Details</button>
-                    <button className="btn btn-primary btn-block">Add To Cart</button>
+                    <button className="btn btn-primary btn-block" onClick={ () => {this.handleClick(this.props.product.id)} }>Add To Cart</button>
                 </div>
             </div>
         )
     }
 }
 
-export default ProductItem
+// const mapDispatchToProps= (dispatch)=>{
+    
+//     return{
+//         addToCart: (id)=>{dispatch(addToCart(id))}
+//     }
+// }
+
+export default connect(null, { addToCart })(ProductItem);

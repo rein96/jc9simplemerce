@@ -4,13 +4,15 @@
       "id": 1,
       "username": "reinhart",
       "email": "reinhart@gmail.com",
-      "password": "satuduatiga"
+      "password": "satuduatiga",
+      "myCart" : []
     },
     {
       "username": "reinhart123",
       "email": "reinhart",
       "password": "reinhart",
-      "id": 2
+      "id": 2,
+      "myCart" : []
     }
   ],
   "products": [
