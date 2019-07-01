@@ -4,7 +4,7 @@ import cookies from 'universal-cookie';
 // Bikin cookie
 const cookie = new cookies()
 
-// Action creator
+// ACTION CREATOR
 
 export const onLoginUser = (inputUsername, inputPassword) => {
 
@@ -69,38 +69,21 @@ export const onLogoutUser = () => {
     }
 }
 
-// export const addToCart= (id)=>{
-
-//     return (dispatch) => {
-//         axios.get('http://localhost:2019/products')
-//         .then( res => {
-//             let addedItem = res.data.find( item => item.id === action.id )
-//             dispatch({
-//                 type: 'ADD_TO_CART',
-//                 payload: {
-//                     myCart: addedItem
-//                     // return{
-//                     //     type: 'ADD_TO_CART',
-//                     //     id
-//                     // }
-//                 }
-//             })
-//         }.catch(   )
-//     }
-// } 
-
-export const addToCart = (id) => {
+export const addToCart = (id, quantityProduct) => {
     return (dispatch) => {
 
         axios.get('http://localhost:2019/products')
         .then( res => {
             console.log(res)
 
-            let addedItem = res.data.find( item => item.id === id )
+            let addedItem = res.data.find( item => item.id === id ) // an Object that we want
+            console.log(addedItem)
+            addedItem.quantity = quantityProduct;
             dispatch({
                 type: 'ADD_TO_CART',
                 payload: {
-                    myCart : addedItem
+                    myCart : addedItem,
+                    totalPrice : (addedItem.price * addedItem.quantity) 
                 }
             })
         })

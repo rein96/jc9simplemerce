@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
-import axios from 'axios';
 
 const init = {
     id: '',
     username: '',
-    myCart: []
+    myCart: [],
+    totalPrice: 0,
+    totalUnit : 0
 }
 
 const authReducer = (state = init, action) => {
@@ -27,24 +28,15 @@ const authReducer = (state = init, action) => {
         case "ADD_TO_CART":
             return{
                 ...state,
-                myCart: action.payload.myCart
+                myCart: [...state.myCart, action.payload.myCart],
+                totalPrice: state.totalPrice + action.payload.totalPrice,
+                totalUnit : state.totalUnit + action.payload.myCart.quantity
             }
     
         default:
             return state
     }
-
-    // if (action.type == 'LOGIN_SUCCESS') {
-    //     return {
-    //         ...state,    //spread operator
-    //         id : action.payload.id,
-    //         username : action.payload.username
-    //     }
-    // }
-
-    // return state;
 }
-
 
 
 export default combineReducers({

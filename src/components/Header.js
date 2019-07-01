@@ -97,16 +97,25 @@ class Header extends React.Component {
             return (
                 <div>
                   <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">e-Carmerce</NavbarBrand>
+                    <Link to="/">e-Carmerce</Link>
+                    &nbsp; &nbsp;
+                    <Link to="/">Home</Link>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
+                      
                       <Nav className="ml-auto" navbar>
+                        
                         <NavItem>
-                          <NavLink href="/components/">Components</NavLink>
+                          <Link to="/cart"> Current cart : {this.props.STATEUSER.totalUnit} Unit(s) </Link>
                         </NavItem>
+
+                          {/*  */}    
                         <NavItem>
-                          <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                          <Link to="/cart"><i className="material-icons">shopping_cart</i></Link>
                         </NavItem>
+                        &nbsp; 
+                          {/*  */}
+
                         <UncontrolledDropdown nav inNavbar>
                           <DropdownToggle nav caret>
                              <b> Hello, {this.props.STATEUSER.username} </b>
