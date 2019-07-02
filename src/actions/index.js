@@ -93,3 +93,10 @@ export const addToCart = (id, quantityProduct) => {
         })
     }
 }
+
+export const removeItemSingleCart = (id) => {
+    return {
+        type: 'REMOVE_ITEM',
+        id : id
+    }
+}

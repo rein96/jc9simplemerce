@@ -55,6 +55,19 @@ const authReducer = (state = init, action) => {
 
             }
 
+        case 'REMOVE_ITEM' :
+            let itemToRemove = state.myCart.find( el => el.id === action.id )
+
+            let filterItemsWithoutRemovedItem = state.myCart.filter( el => el.id !== action.id )
+
+            let newTotalUnit = state.totalUnit - itemToRemove.quantity 
+
+            return {
+                ...state,
+                myCart: filterItemsWithoutRemovedItem,
+                totalPrice: state.totalPrice - itemToRemove.price,
+                totalUnit : newTotalUnit
+            }
            
     
         default:

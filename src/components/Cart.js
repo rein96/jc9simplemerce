@@ -2,12 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import Checkout from './Checkout';
+import { removeItemSingleCart } from '../actions/index'
 
 class Cart extends React.Component {
 
+    removeItemCart = (id) => {
+        this.props.removeItemSingleCart(id)
+    }
+
+    // render items (myCart) on tables
     renderCart = () => {
-
-
         if ( this.props.STATEauth.myCart.length > 0 ) {
             return(
                 this.props.STATEauth.myCart.map( el => {
@@ -32,14 +36,13 @@ class Cart extends React.Component {
 								 {el.quantity} Units
 							</td>
 							<td> $ {el.quantity*el.price} </td>
+                            <td> <button type="button" className="btn btn-danger" onClick={ () => {this.removeItemCart(el.id)} } > Remove </button> </td>
 					        
                         </tr>
                     )
                 } )
             )
         }
-
-
     }
 
 
@@ -71,6 +74,7 @@ class Cart extends React.Component {
 					        <th>Price</th>
 					        <th>Quantity</th>
 					        <th>Subtotal</th>
+                            <th> Action </th>
 				      	</tr>
 				    </thead>
 				    <tbody>
@@ -103,4 +107,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps, { removeItemSingleCart })(Cart);

@@ -18,7 +18,6 @@ class ProductItem extends Component {
         } else {
             this.props.addToCart(id, inputQuantity);
         }
-        
     }
 
     render(){
