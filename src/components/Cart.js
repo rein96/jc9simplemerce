@@ -12,11 +12,11 @@ class Cart extends React.Component {
             return(
                 this.props.STATEauth.myCart.map( el => {
                     return (
-                        <tr key={this.props.STATEauth.myCart.id}>
+                        <tr key={this.props.STATEauth.id}>
                             <td>
 					        	<div className="row">
 									<div className="col-lg-2 Product-img">
-										<img src={el.src} alt="Car Picture" className="img-responsive" style={ { width: '300px' } } />
+										<img src={el.src} alt="A Car" className="img-responsive" style={ { width: '300px' } } />
 									</div>
 								</div>
 					        </td>

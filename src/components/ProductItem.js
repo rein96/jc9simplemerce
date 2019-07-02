@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { addToCart } from '../actions/index'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import DetailProduct from './DetailProduct';
+// import DetailProduct from './DetailProduct';
 
 // <ProductItem product={this.state.products}  />
 
@@ -33,11 +33,9 @@ class ProductItem extends Component {
                     {/* <p className='card-text'> {this.props.product.desc} </p> */}
                     <p className='card-text'> $ {price} </p>
                     <input ref={input => this.quantity = input}  type='number' placeholder="Quantity" className="form-control mb-3"/>
-                    <Link to={ `/detailproduct/${id} ` } >
-
-                       
-                        <button className="btn btn-outline-primary btn-block">Details</button>
-                        
+                    
+                    <Link to={ `/detailproduct/${id} ` } >           
+                        <button className="btn btn-outline-primary btn-block">Details</button>         
                     </Link>
                     
                     <button className="btn btn-primary btn-block" onClick={ () => {this.handleClick(this.props.product.id)} }>Add To Cart</button>
@@ -46,12 +44,5 @@ class ProductItem extends Component {
         )
     }
 }
-
-// const mapDispatchToProps= (dispatch)=>{
-    
-//     return{
-//         addToCart: (id)=>{dispatch(addToCart(id))}
-//     }
-// }
 
 export default connect(null, { addToCart })(ProductItem);

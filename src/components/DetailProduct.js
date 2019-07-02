@@ -48,7 +48,7 @@ class DetailProduct extends React.Component {
         var { nama, price, desc, src, id } = this.state.product 
         return (
             <div className='card col-6 mt-5 mx-auto'>
-                <img className='card-img-top' src={src} />
+                <img className='card-img-top' src={src} alt='Product'/>
                 <div className='card-body'>
                     <h3 className ='card-title'>Product: {nama}</h3>
                     <p className='card-text'>Description: {desc}</p>

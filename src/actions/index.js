@@ -38,6 +38,7 @@ export const onLoginUser = (inputUsername, inputPassword) => {
 
                 // Create data untuk cookie
                 cookie.set( 'USERNAMECOOKIE', {id, username} , { path: '/'} )
+                // {id, username} = data yang mau disimpan oleh cookie
             }
 
             else if (res.data.length === 0) {
@@ -77,13 +78,16 @@ export const addToCart = (id, quantityProduct) => {
             console.log(res)
 
             let addedItem = res.data.find( item => item.id === id ) // an Object that we want
-            console.log(addedItem)
             addedItem.quantity = quantityProduct;
+
             dispatch({
                 type: 'ADD_TO_CART',
                 payload: {
-                    myCart : addedItem,
-                    totalPrice : (addedItem.price * addedItem.quantity) 
+                    id: id,
+                    singleItemToCart : addedItem,
+                    totalPrice : (addedItem.price * addedItem.quantity),
+                    lastSelectedID : id,
+                    quantityProduct : quantityProduct
                 }
             })
         })

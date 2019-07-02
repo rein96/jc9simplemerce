@@ -40,13 +40,13 @@ class ManageProduct extends React.Component {
             
             if(el.id !== this.state.selectedID){    // 2 !== 1 = true
                 return (
-                    <tr>
+                    <tr key={el.id}>
                         {/* <td>{el.id}</td> */}
                         <td>{el.nama}</td>
                         <td>{el.desc}</td>
                         <td>{el.price}</td>
                         <td>
-                            <img src={el.src} style={ { width: '300px' } }/>
+                            <img src={el.src} style={ { width: '300px' } } alt='Product'/>
                         </td>
                         <td>
                             <button onClick={() => {this.setState({selectedID: el.id})}} className = 'btn btn-primary'>Edit</button>
@@ -132,7 +132,7 @@ class ManageProduct extends React.Component {
 
         // kalo belom login = STATEUSER.username nya kosong
         if (this.props.STATEUSER.username === '') {
-            return <center><h2> You have to login first, <Link to='/login'> Click here to login </Link> </h2></center>
+            return <center><h2> To access ManageProduct, You have to login first. <br/><br/> <Link to='/login'> Click here to login </Link> </h2></center>
             // return <Redirect to='/login' />
         }
 

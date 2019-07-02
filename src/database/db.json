@@ -36,6 +36,13 @@
       "price": "23000",
       "src": "https://i.pinimg.com/originals/2f/30/46/2f30461c1e25cf262207e7480e5668cb.jpg",
       "id": 6
+    },
+    {
+      "nama": "Toyota Camry 2011",
+      "desc": "Used",
+      "price": 10000,
+      "src": "https://file.kelleybluebookimages.com/kbb/base/house/2011/2011-Toyota-Camry-FrontSide_TOCAM111_640x480.jpg?interpolation=high-quality&downsize=391:*",
+      "id": 7
     }
   ]
 }

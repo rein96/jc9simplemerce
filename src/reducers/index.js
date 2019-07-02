@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const init = {
     id: '',
     username: '',
-    myCart: [],
+    myCart: [],     // Array [ {}, {}, {} ]
     totalPrice: 0,
     totalUnit : 0
 }
@@ -26,12 +26,36 @@ const authReducer = (state = init, action) => {
             }
 
         case "ADD_TO_CART":
-            return{
-                ...state,
-                myCart: [...state.myCart, action.payload.myCart],
-                totalPrice: state.totalPrice + action.payload.totalPrice,
-                totalUnit : state.totalUnit + action.payload.myCart.quantity
+            let moreThanOne = state.myCart.find( el => el.id === action.payload.lastSelectedID );
+            console.log('%c moreThanOne', 'color:orange; font-weight:bold;');
+            console.log(moreThanOne);
+
+            if(moreThanOne) {
+                
+                var addedItemQuantity = action.payload.singleItemToCart.quantity
+                for(var i = 0; i<state.myCart.length; i++){
+                    if(state.myCart[i].id === action.payload.lastSelectedID){
+                        state.myCart[i].quantity = state.myCart[i].quantity + addedItemQuantity
+                    }
+                }
+
+               return {
+                   ...state,
+                   totalUnit : state.totalUnit + addedItemQuantity,
+                   totalPrice: state.totalPrice + parseInt(moreThanOne.price),
+               }
+            } else {
+
+                return{
+                    ...state,
+                    myCart: [...state.myCart, action.payload.singleItemToCart],
+                    totalPrice: state.totalPrice + action.payload.totalPrice,
+                    totalUnit : state.totalUnit + action.payload.singleItemToCart.quantity
+                }
+
             }
+
+           
     
         default:
             return state
